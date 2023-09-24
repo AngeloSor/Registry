@@ -14,3 +14,5 @@ Link backend: https://devops.altenitalia.it/Alten-Sandbox/StagiBox
 https://dev.azure.com/Alten-Recruiting/Registry/_git/Registry%20API?version=GBmain
 
 Link frontend: https://dev.azure.com/Alten-Recruiting/Registry/_git/Registry%20Client?version=GBfeature
+
+Link al progetto: https://registryclient-feature.azurewebsites.net/
