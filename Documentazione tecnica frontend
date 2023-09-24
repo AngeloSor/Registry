@@ -1,0 +1,149 @@
+Il progetto si divide essenzialmente in tre sezioni:
+
+Components : sezione relativa alla definizione dei componenti
+Modelli : sezione relativa alla definizione di modelli
+Servizi : sezione relativa alla definizione dei servizi
+Componenti
+All'interno della cartella troviamo tre directory:
+
+Roles : contiene i componenti relativi ai ruoli definiti nel progetto, ovvero Admin, User e Technician
+Dialogs : contiene i componenti relativi ai dialog che non sono associati strettamente ai ruoli
+General : contiene i componenti che non sono associati strettamente ai ruoli
+Ruoli
+All'interno della cartella troviamo tre directory:
+
+Admin : contiene i componenti relativi al ruolo dell'amministratore
+Utente : contiene i componenti relativi al ruolo dell'utente
+Tecnico : contiene i componenti relativi al ruolo del tecnico
+Admin
+All'interno della cartella troviamo due directory:
+
+Admin Dashboard : sezione relativa alla visualizzazione della dashboard dell'amministratore e delle sue funzionalità
+Meeting Create : sezione relativa alla creazione dei colloqui
+Utente
+All'interno della cartella troviamo tre directory:
+
+User Create : sezione relativa alla creazione di un nuovo utente/tecnico
+Modifica utente : sezione relativa alla modifica dei dettagli relativi ad un utente/tecnico
+User Detail : sezione relativa alla visualizzazione del profilo utente/tecnico
+Tecnico
+All'interno della cartella troviamo quattro directory:
+
+Codingame Risultato : sezione relativa all'esito della challenge CodinGame da parte di un utente che deve o ha svolto il colloquio con il tecnico
+Evento in programma : sezione relativa alla visualizzazione degli eventi
+Feedback : sezione relativa alla creazione del feedback post colloquio
+Dialogs : sezione relativa alla gestione degli eventi
+Generale
+All'interno della cartella troviamo sette directory:
+
+Homepage : sezione relativa alla visualizzazione della homepage
+Footer : sezione relativa alla visualizzazione del footer
+Toolbar : sezione relativa alla visualizzazione della toolbar
+Forgot Pw : sezione relativa alla richiesta per una nuova password
+Loader : sezione relativa al loading delle pagine
+Login : sezione relativa al login di qualsiasi tipo di utente(semplice, admin o tecnico)
+Not found : sezione relativa al non ritrovamento della password per il login
+Finestre
+All'interno della cartella troviamo il componente Exit Dialog per la funzione di logout dal sistema
+
+Modelli
+All'interno della cartella troviamo due directory:
+
+DTOs: cartella relativa ai modelli che vengono salvati nel database
+Entità : cartella relativa ai modelli che non vengono salvati nel database
+DTO
+All'interno della cartella troviamo i seguenti modelli:
+
+CodinGame : modelli relativi a CodinGame
+Interview Feedback : modello relativo al feedback post colloquio
+Keycloak Group : modello relativo ai gruppi Keycloak
+Meeting : modello relativo al meeting
+Registro CV : modelli relativi al CV utente
+Skill : modelli relativi alle skill utente
+Utente : modelli relativi all'utente
+Entità
+All'interno della cartella troviamo i seguenti modelli:
+
+Codingame Report : modelli relativi al report CodinGame
+JWT : modello relativo al token
+
+MicrosoftTeams-image (1).png
+
+Configurazione del progetto
+Il necessario che serve per la corretta esecuzione dell'applicativo, è il seguente:
+
+Nodo.js
+Si tratta della JavaScript runtime environment. Consigliata la versione 16.17.1
+
+https://nodejs.org/en/ 
+
+Nota importante:
+Durante l'installazione di node.js, si consiglia fortemente di attivare il flag per installare tutto il necessario. Questo installerà sulla macchina chocolatey, un ottimo strumento per la gestione dei pacchetti/programmi da riga di comando per windows.
+È bene ricordarsi dopo ogni installazione di pacchetti con npm (per sicurezza) di riavviare la sessione della shell (chiudere e riaprire il terminale)
+
+Cli angolare
+Versione 14 o superiore. Di default lanciando da riga di comando il seguente comando:
+npm install -g @angular/cli
+
+Verificare il corretto funzionamento lanciando
+ng version
+
+In caso di errore sul modulo ng.ps1 lanciare con windows powershell (da amministratore) il seguente comando:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+Digitare T per applicare a tutti e attendere. Subito dopo verificare la corretta modifica lanciando nella stessa shell Get-ExecutionPolicy
+Se si ottiene RemoteSigned allora è tutto ok altrimenti chiudere la shell
+e riprovare.
+
+In caso positivo, chiudere comunque tutte le shell e riprovare, eseguendo il comando
+ng version
+
+Codice di Visual Studio
+Editor di testo utilizzato per lo sviluppo fe. Si consiglia di installare alcune estensioni per:
+
+HTML
+Css
+Js
+TypeScript
+Completamento automatico
+Npm
+Docker (facoltativo Serve a migliorare la gestione dei container docker)
+TypeScript
+Subset di Javascript utilizzato per la logica presente fe
+Si installa lanciando da riga di comando:
+npm install -g typescript
+
+Git
+È un sistema open source per il versionamento del codice
+Quando lo si install è consigliato nella prima finestra (dove sono presenti tutte le check) di spuntarle tutte e per quanto riguarda tutto quello che viene dopo di lasciare di default tutto quanto
+
+https://git-scm.com/download/win 
+
+Docker Desktop
+https://www.docker.com/products/docker-desktop/ 
+
+Prima dell'installazione è consigliato installare (se non già presente) la funzionalità di windows che si chiama Hyper-V la quale offre la virtualizzazione hardware
+
+Aprire pannello di controllo
+Programmi
+Programmi e funzionalità
+Sulla sinstra vicino all'icona dello scudo cliccare su attiva o disattiva funzionalità di windows.
+Trovare la voce Hyper-V e spuntarla. Cliccare su ok per poi seguire le azioni suggerite
+Si riavvierà il pc. Installate docker quindi.
+
+All'avvio di docker, se si presenta un errore di tipo WSL-2 (o simile) cliccare il link in descrizione all'errore, porterà ad una guida su microsoft, la quale parlerà di installare un pacchetto linux e risolverà il problema.
+
+Sarà necessario riavviare il pc
+
+Infine
+Una volta scaricato, installato e configurato tutto quanto, sarà necessario clonare la repository con il comando
+git clone <repo>
+
+Una volta clonata la repo, accedere alla repo aprendola tramite vs code
+Aprire un terminale e lanciare il comando (sotto la root della cartella dove è presente il file package.json) il comando
+npm install o npm i
+
+Dovesse dare errore lanciare
+npm i --force
+
+Questo installerà tutti i moduli node
+Al termine seguire il progetto con ng serve -o (aprirà direttamente il broswer)
