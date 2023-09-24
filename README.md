@@ -7,7 +7,7 @@ Registrerà dal "primo contatto" del dipendente all'interno di Alten fino all'as
 Ci saranno due tipi di attori:
 - admin, che avrà pieno accesso ai dati dell'utente e potrà modificarli;
 - utente, che potrà visualizzare solo i propri dati;
-- 
+
 Questo progetto si basa principalmente su Keycloak, integrato con ASP.Net per Web.API, JWTAuthentication per autorizzare / autenticare gli attori, Docker per containerizzare l'immagine del software, Smtp4dev e Angular.
 
 Link backend: https://devops.altenitalia.it/Alten-Sandbox/StagiBox
