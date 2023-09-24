@@ -1,0 +1,63 @@
+Il progetto ha lo scopo di creare un applicativo in grado di gestire la fase di recruiting di Alten.
+Il BE è stato implementato utilizzando le WebApi ed in particolar modo il Repository Pattern, per gestire il DB (sql server) è stato utilizzato un ORM, in particolare l'Entity Framework Core 6 utilizzando un approccio Code-First, la soluzione comprende i seguenti progetti:
+
+KeycloakAuth
+KeycloakAuth.BLL
+KeycloakAuth.DAL
+KeycloakAuth.SHARED
+KeycloakAuth
+KeycloakAuth è il progetto principale contiene i controller che utilizza per comunicare con il FE e la configurazione di AutoMapper.
+Tutti gli Endpoint sono protetti da un autenticazione (autenticazione messa a livello della classe controller o dell'endpoint stesso in base alla circostanza), l'autenticazione è gestita attraverso un token JWT che nel progetto BLL viene elaborato e restituisce il ruolo dell'utente che viene poi utilizzato in questo progetto per gestire le varie autenticazioni.
+La configurazione di AutoMapper serve a gestire la conversione delle classi da Entità a Repository e viceversa.
+
+KeycloakAuth.BLL
+Questo progetto contiene la Business Logic dell'applicativo, in particolare attualmente gestisce i token jwt ed i dizionari.
+I token JWT vengono elaborati si controlla che siano autentici e che non siano stati manomessi, fatto ciò si verifica il ruolo dell'utente che tramite il ClaimsIdentity viene reso visibile al resto dell'applicativo.
+I dictionary associano una coppia chiave/valore, dove la chiave è un codice univoco che serve a risalire al valore che è il messaggio di errore riportato al FE, tutti i dictionary hanno le medesime chiavi che corrispondono però a messaggi differenti, in particolare ciò che cambia è la lingua infatti i dizionari sono utilizzati per riportare il messaggio di errore nella lingua corretta, ad un'istanza del FE viene passato sempre un solo dizionario corrispondente appunto alla lingua dell'utente che sta utilizzando l'applicativo.
+
+KeycloakAuth.DAL
+Il DAL è il livello che si occupa di interfacciarsi con il Database utilizzando l'EF core 6, il progetto comprende il DBContext, le entità, le migrazioni, le repository e le relative interfacce,
+in particolare:
+Le entità rappresentano le tabelle che saranno poi inserite/modificate all'interno del DB attraverso le migrazioni.
+Le repository si occupano di interagire direttamente con il database attraverso l'EF core 6 e di gestirne la logica, inoltre quando necessario si occupano di inviare e ricevere dati attraverso chiamate API con altri servizi esterni (attualmente con il servizio di CodinGame).
+
+KeycloakAuth.SHARED
+Il progetto SHARED contiene tutti i DTO, i DTO vengono utilizzati per trasmettere e ricevere dati dal FE, ogni qualvolta si riceve un dato dal FE va convertito in un entità prima di poterlo salvare all'interno del DB, alla stessa maniera ogni dato proveniente dal DB (sotto forma quindi di entità) va convertito in un DTO prima di poter essere mandato al FE.
+
+Configurazione del progetto
+Per la corretta esecuzione del BE è consigliata l'installazione dei seguenti applicativi:
+
+Visual studio 2022 Professional
+Visual studio 2022 è l'ide che abbiamo utilizzato per lo sviluppo del BE, è scaricabile con il seguente link:
+https://visualstudio.microsoft.com/it/ è consigliata la versione professional in quanto ha feature che permettono di lavorare meglio in team (ad esempio una migliore gestione di GIT permettendo di vedere chi ha effettuato l'ultima modifica ad una determinata parte di codice ed altro) ma
+è perfettamente utilizzabile anche la versione Community
+
+Docker Desktop
+https://www.docker.com/products/docker-desktop/ 
+
+Prima dell'installazione è consigliato installare (se non già presente) la funzionalità di windows che si chiama Hyper-V la quale offre la virtualizzazione hardware
+
+Aprire pannello di controllo
+Programmi
+Programmi e funzionalità
+Sulla sinstra vicino all'icona dello scudo cliccare su attiva o disattiva funzionalità di windows.
+Trovare la voce Hyper-V e spuntarla. Cliccare su ok per poi seguire le azioni suggerite
+Si riavvierà il pc. Installate docker quindi.
+
+All'avvio di docker, se si presenta un errore di tipo WSL-2 (o simile) cliccare il link in descrizione all'errore, porterà ad una guida su microsoft, la quale parlerà di installare un pacchetto linux e risolverà il problema.
+
+Sarà necessario riavviare il pc
+
+SQL Server Management Studio
+Applicativo utile a visualizzare e gestire il Database, è scaricabile al seguente link:
+https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16 
+
+Git
+È un sistema open source per il versionamento del codice
+Quando lo si install è consigliato nella prima finestra (dove sono presenti tutte le check) di spuntarle tutte e per quanto riguarda tutto quello che viene dopo di lasciare di default tutto quanto
+
+Infine
+Una volta scaricato, installato e configurato tutto quanto, sarà necessario clonare la repository con il comando
+git clone <repo>
+
+Una volta clonata la repo, accedere alla repo aprendola tramite Visual Studio
